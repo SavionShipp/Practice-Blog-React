@@ -28,12 +28,20 @@ function PostNew() {
   )
 }
 
-function PostIndex () {
+function PostIndex (props) {
+  console.log(props);
 return (
 
   <div id="posts-index">
-
   <h1>All posts</h1>
+  {props.posts.map( post => (
+    <div key={post.id} className="posts">
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+      <img src={post.image} alt=""/>
+    </div>
+  ))}
+  
   <h2>Savion owns this blog</h2>
   <p>this is all a body paragraph section</p>
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRyPsC-WOTRffoXvCe-VYnG_97c8b7qavsTA&s" alt="random picture"></img>
@@ -55,10 +63,31 @@ function Footer () {
 }
 
 function PostPage() {
+  var posts = [
+    {
+      id: 1,
+      title: "___",
+      body: "___",
+      image: "___",
+    },
+    {
+      id: 2,
+      title: "___",
+      body: "___",
+      image: "___",
+    },
+    {
+      id: 3,
+      title: "___",
+      body: "___",
+      image: "___",
+    },
+  ];
+
   return (
     <>
     <PostNew />
-    <PostIndex />
+    <PostIndex myname={name} posts={posts}/>
     </>
   )
 }
@@ -71,10 +100,21 @@ function All() {
     </>
   )
 }
+
+// function Practice() {
+//   return(
+//     <ul>
+//       <li>one</li>
+//       <li>two</li>
+//       <li>three</li>
+//     </ul>
+//   )
+// }
 function App() {
   return (
     <div>
       <All />
+      {/* <Practice /> */}
     </div>
   );
 }
