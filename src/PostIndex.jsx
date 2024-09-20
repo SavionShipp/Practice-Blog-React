@@ -10,6 +10,7 @@ export function PostIndex(props) {
           <h2>{post.title}</h2>
           <p>{post.body}</p>
           <img src={post.image} alt="" />
+          <button onClick={() => props.onShow(post)}>More info</button>
         </div>
       ))}
       </div>
