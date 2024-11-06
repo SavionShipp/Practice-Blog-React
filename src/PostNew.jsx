@@ -1,18 +1,28 @@
-export function PostNew() {
+// import axios from "axios"
+export function PostNew(props) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const params = new FormData(event.target);
+    props.onCreate(params)
+      event.target.reset()
+  }
+  
   return (
     <div id="posts-new">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h1>New post</h1>
-
-        <label>Post Title:</label>
-        <input type="text" id="title" name="title" required></input>
-
-        <label>Post Body:</label>
-        <input type="body" id="body" name="body" rows="10" required>
-
-        </input>
-        <label>Post Image:</label>
-        <input type="file" id="image" name="image" accept="image/*" required></input>
+      <div>
+        title:<input name="title" type= "text"></input>
+      </div>
+      <div>
+        body:<input name="body" type= "text"></input>
+      </div>
+      <div>
+        image url:<input name="image" type= "text"></input>
+      </div>
+      <div>
+        <button type="submit">Create</button>
+      </div>
       </form>
     </div>
   );
